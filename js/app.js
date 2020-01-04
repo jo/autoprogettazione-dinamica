@@ -44,7 +44,7 @@ class IntroductionView {
   update () {
     const model = new Table(this.config)
 
-    const gap = 1
+    const gap = 0.1
 
     let parts = Object.keys(model.lengths)
         .sort()
