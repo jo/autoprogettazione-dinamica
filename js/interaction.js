@@ -194,9 +194,8 @@ export class Interaction {
     const oldMesh = group.getObjectByName('surface')
     const surfaceMaterial = this.surfaceMaterial
     const mesh = oldMesh || new THREE.Mesh(geometry, this.surfaceMaterial)
-    if (oldMesh) {
-      mesh.geometry = geometry
-    } else {
+    mesh.geometry = geometry
+    if (!oldMesh) {
       mesh.name = 'surface'
     }
     mesh.position.x = lath.length/2
