@@ -39,8 +39,8 @@ const buildInfoTable = model => {
   const now = new Date
   const content = [
     [now.toLocaleDateString()],
-    [`${model.length} x ${model.height} x ${model.width}`],
-    [`${model.q1} x ${model.q2}`]
+    [`${formatLength(model.length)} x ${formatLength(model.height)} x ${formatLength(model.width)}`],
+    [`${formatLength(model.q1)} x ${formatLength(model.q2)}`]
   ]
 
   const tr1 = table.append('tr')

@@ -77,8 +77,8 @@ class IntroductionView {
           return memo
         }, {})
 
-    if (this.updateCount < 100) {
-    } else if (this.updateCount < 400) {
+    if (this.updateCount < 50) {
+    } else if (this.updateCount < 150) {
       parts = {
         ...parts,
         keel: model.parts.keel,
@@ -87,7 +87,7 @@ class IntroductionView {
         'board': { id: 'board', rebuild: true, laths: [] }
       }
       this.updateCount += 1
-    } else if (this.updateCount < 600) {
+    } else if (this.updateCount < 200) {
       parts = {
         ...parts,
         keel: model.parts.keel,
@@ -96,7 +96,7 @@ class IntroductionView {
         'board': { id: 'board', rebuild: true, laths: [] }
       }
       this.updateCount += 1
-    } else if (this.updateCount < 800) {
+    } else if (this.updateCount < 250) {
       parts = {
         ...parts,
         ...model.parts
