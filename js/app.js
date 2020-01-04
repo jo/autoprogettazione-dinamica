@@ -29,13 +29,14 @@ class IntroductionView {
       { length: 350, height: 100, width: 120, q1: 4.0, q2: 16.0 },
       { length: 100, height: 150, width: 70, q1: 4.0, q2: 6.0 },
       { length: 120, height: 40, width: 40, q1: 4.0, q2: 4.0 },
-      { length: 30, height: 10, width: 10, q1: 0.4, q2: 0.6 }
+      { length: 60, height: 20, width: 30, q1: 0.6, q2: 1.6 }
     ]
 
     this.currentSize = 0
     this.readyForNext = {}
     
     this.updateCount = 0
+    this.variateDiemensions = false
 
     this.update()
     this.animate()
@@ -76,7 +77,8 @@ class IntroductionView {
           return memo
         }, {})
 
-    if (this.updateCount < 200) {
+    if (this.updateCount < 100) {
+    } else if (this.updateCount < 400) {
       parts = {
         ...parts,
         keel: model.parts.keel,
@@ -85,7 +87,7 @@ class IntroductionView {
         'board': { id: 'board', rebuild: true, laths: [] }
       }
       this.updateCount += 1
-    } else if (this.updateCount < 300) {
+    } else if (this.updateCount < 600) {
       parts = {
         ...parts,
         keel: model.parts.keel,
@@ -94,13 +96,14 @@ class IntroductionView {
         'board': { id: 'board', rebuild: true, laths: [] }
       }
       this.updateCount += 1
-    } else if (this.updateCount < 400) {
+    } else if (this.updateCount < 800) {
       parts = {
         ...parts,
         ...model.parts
       }
       this.updateCount += 1
     } else {
+      this.variateDiemensions = true
       parts = {
         ...parts,
         ...model.parts
@@ -120,51 +123,53 @@ class IntroductionView {
     const step = 1
     requestAnimationFrame(this.animate.bind(this))
 
-    const currentSize = this.sizes[this.currentSize]
+    if (this.variateDiemensions) {
+      const currentSize = this.sizes[this.currentSize]
 
-    if (currentSize.length === this.config.length) {
-      this.readyForNext.length = true
-    } else if (currentSize.length > this.config.length) {
-      this.config.length += step
-    } else {
-      this.config.length -= step
-    }
+      if (currentSize.length === this.config.length) {
+        this.readyForNext.length = true
+      } else if (currentSize.length > this.config.length) {
+        this.config.length += step
+      } else {
+        this.config.length -= step
+      }
 
-    if (currentSize.height === this.config.height) {
-      this.readyForNext.height = true
-    } else if (currentSize.height > this.config.height) {
-      this.config.height += step
-    } else {
-      this.config.height -= step
-    }
-    
-    if (currentSize.width === this.config.width) {
-      this.readyForNext.width = true
-    } else if (currentSize.width > this.config.width) {
-      this.config.width += step
-    } else {
-      this.config.width -= step
-    }
-    
-    if (Math.round(currentSize.q1*100) === Math.round(this.config.q1*100)) {
-      this.readyForNext.q1 = true
-    } else if (currentSize.q1 > this.config.q1) {
-      this.config.q1 += step/10
-    } else {
-      this.config.q1 -= step/10
-    }
-    
-    if (Math.round(currentSize.q2*100) === Math.round(this.config.q2*100)) {
-      this.readyForNext.q2 = true
-    } else if (currentSize.q2 > this.config.q2) {
-      this.config.q2 += step/10
-    } else {
-      this.config.q2 -= step/10
-    }
-    
-    if (this.readyForNext.width && this.readyForNext.height && this.readyForNext.length && this.readyForNext.q1 && this.readyForNext.q2 ) {
-      this.currentSize = this.nextSize
-      this.readyForNext = {}
+      if (currentSize.height === this.config.height) {
+        this.readyForNext.height = true
+      } else if (currentSize.height > this.config.height) {
+        this.config.height += step
+      } else {
+        this.config.height -= step
+      }
+      
+      if (currentSize.width === this.config.width) {
+        this.readyForNext.width = true
+      } else if (currentSize.width > this.config.width) {
+        this.config.width += step
+      } else {
+        this.config.width -= step
+      }
+      
+      if (Math.round(currentSize.q1*100) === Math.round(this.config.q1*100)) {
+        this.readyForNext.q1 = true
+      } else if (currentSize.q1 > this.config.q1) {
+        this.config.q1 += step/10
+      } else {
+        this.config.q1 -= step/10
+      }
+      
+      if (Math.round(currentSize.q2*100) === Math.round(this.config.q2*100)) {
+        this.readyForNext.q2 = true
+      } else if (currentSize.q2 > this.config.q2) {
+        this.config.q2 += step/10
+      } else {
+        this.config.q2 -= step/10
+      }
+      
+      if (this.readyForNext.width && this.readyForNext.height && this.readyForNext.length && this.readyForNext.q1 && this.readyForNext.q2 ) {
+        this.currentSize = this.nextSize
+        this.readyForNext = {}
+      }
     }
 
     this.update()
