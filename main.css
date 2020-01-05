@@ -15,11 +15,12 @@ body {
 
 header {
   display: flex;
+  padding: 0.5ex 0.5em;
   align-items: baseline;
   background-color: #ffe700;
 }
 header > * {
-  padding: 1ex 1em;
+  padding: 0.5ex 0.5em;
 }
 header .fill {
   flex: 1;
@@ -48,15 +49,35 @@ th, td {
 }
 blockquote {
   white-space: pre;
+  margin: 3ex 2em 6ex 2em;
 }
-.lath {
+
+/* construction plan */
+svg {
+  display: inline-block;
+}
+svg.construction-plan {
+  max-height: 80vh;
+  margin: 1ex 1em;
+}
+rect.lath {
   fill: white;
   stroke: black;
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
 }
-svg {
-  display: inline-block;
+rect.frameborder {
+  fill: none;
+  stroke: black;
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+}
+rect.outline {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1px;
+  stroke: none;
+  vector-effect: non-scaling-stroke;
 }
 
 footer {
@@ -74,17 +95,17 @@ main {
 
 nav {
   display: flex;
-  padding: 3ex 0 1ex 0;
+  padding: 1ex 0.5em;
   flex-direction: row;
+  min-width: 12em;
 }
 header a,
 nav a {
   color: #ff3a6b;
-  padding: 1ex 1em;
+  padding: 0.5ex 0.5em;
   text-decoration: none;
-}
-nav a {
-  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 article {
@@ -100,8 +121,8 @@ article.interaction {
 
 article.construction .frame {
   outline: 1px solid black;
-  margin: 1ex 1em;
-  padding: 1ex 1em;
+  margin: 1ex 0.5em;
+  padding: 1ex 0.5em;
 }
 
 article canvas {
@@ -110,7 +131,7 @@ article canvas {
 
 article.abstract,
 article.help {
-  padding: 3ex 3em 3ex 1em;
+  padding: 3ex 1em;
 }
 
 article h3 {
@@ -131,12 +152,6 @@ article img {
   width: 53em;
   max-width: 100%;
 }
-article  hr {
-  margin: 9ex 0;
-  border: none;
-  border-top: 1px solid black;
-  max-width: 53em;
-}
 article  a {
   color: #364177;
 }
@@ -146,7 +161,7 @@ article  ul {
 
 
 aside {
-  border-left: 1px solid black;
+  border-top: 1px solid black;
 }
 aside form {
   padding: 3ex 1em;
@@ -182,23 +197,31 @@ aside input {
     margin: 0 1em 1ex 0;
   }
   article.construction .frame {
-    margin: 3ex 3em;
-    padding: 3ex 3em;
+    margin: 3ex 1em;
+    padding: 3ex 1em;
+  }
+  aside {
+    border-left: 1px solid black;
+    border-top: none;
   }
 }
 @media (min-width: 1400px) {
   header {
-    padding: 2ex 1em;
+    padding: 1.5ex 1em;
   }
   header > * {
-    padding: 1ex 1em;
-  }
-  nav {
-    padding-right: 3ex;
+    padding: 1.5ex 0.5em;
   }
   article.abstract,
   article.help {
     padding: 6ex 3em 9ex 1em;
+  }
+  article.construction {
+    padding: 4.5ex 3em 9ex 1em;
+  }
+  article.construction .frame {
+    margin: 2ex 1.5em;
+    padding: 2ex 1.5em;
   }
   nav {
     padding: 6ex 3em 9ex 1em;
@@ -206,22 +229,37 @@ aside input {
 }
 
 @media (max-width: 600px) {
-  nav a {
-    flex: 1;
-    padding: 0 1em;
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  article.construction .frame {
-    margin: 1.2ex 1.2em;
-    padding: 1.2ex 1.2em;
-    font-size: 0.8em;
+  nav {
+    min-width: none;
   }
   table {
-    font-size: 0.8em;
+    font-size: 0.7em;
   }
   th, td {
     padding: 1px 0.5em;
   }
+}
+@media (max-width: 460px) {
+  blockquote {
+    font-size: 3.5vw;
+    margin: 1ex 0;
+    line-height: 1.8;
+  }
+}
+
+@media print {
+  header,
+  main nav,
+  article div.frame,
+  main aside,
+  footer {
+    display: none;
+  }
+  article {
+    overflow: hidden;
+  }
+}
+
+article div.frame {
+  display: none;
 }
