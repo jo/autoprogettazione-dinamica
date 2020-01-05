@@ -26,10 +26,11 @@ class IntroductionView {
 
     this.sizes = [
       { length: 201, height: 71, width: 81, q1: 2.1, q2: 10.1 },
+      { length: 175, height: 50, width: 50, q1: 4.0, q2: 6.0 },
       { length: 350, height: 100, width: 120, q1: 4.0, q2: 16.0 },
-      { length: 100, height: 150, width: 70, q1: 4.0, q2: 6.0 },
+      { length: 100, height: 150, width: 50, q1: 4.0, q2: 6.0 },
       { length: 120, height: 40, width: 40, q1: 4.0, q2: 4.0 },
-      { length: 60, height: 20, width: 30, q1: 0.6, q2: 1.6 }
+      { length: 70, height: 30, width: 40, q1: 1.2, q2: 2.1 }
     ]
 
     this.currentSize = 0
