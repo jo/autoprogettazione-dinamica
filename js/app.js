@@ -6,6 +6,17 @@ import { Plan } from './plan.js'
 import { Configurator } from './configurator.js'
 import * as THREE from './build/three.module.js'
 
+class WelcomeView {
+  constructor (config, { article, welcomeTemplate }) {
+    this.element = article
+    this.element.innerHTML = welcomeTemplate.innerHTML
+  }
+
+  destroy () {
+    this.element.innerHTML = ''
+  }
+}
+
 class IntroductionView {
   constructor (config, { article }) {
     this.element = article
@@ -268,6 +279,7 @@ class HelpView {
 }
 
 const Views = {
+  'welcome': WelcomeView,
   'introduction': IntroductionView,
   'interaction': InteractionView,
   'construction': ConstructionView,
@@ -290,7 +302,7 @@ export class App {
 
   setView (value) {
     if (this.view && typeof this.view.destroy === 'function') this.view.destroy()
-    const name = value in Views ? value : 'introduction'
+    const name = value in Views ? value : 'welcome'
     this.elements.article.className = name
     const View = Views[name]
     this.view = new View(this.config, this.elements)

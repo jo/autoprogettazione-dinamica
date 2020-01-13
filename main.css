@@ -52,12 +52,18 @@ blockquote {
   margin: 3ex 2em 6ex 2em;
 }
 
+/* welcome */
+.welcome {
+  background: transparent url(img/kit.jpg) no-repeat center center;
+  background-size: cover;
+}
+
 /* construction plan */
 svg {
   display: inline-block;
 }
 svg.construction-plan {
-  max-height: 80vh;
+  max-height: calc(100vh - 24ex);
   margin: 1ex 1em;
 }
 rect.lath {
@@ -106,6 +112,10 @@ nav a {
   text-decoration: none;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+header h1 a {
+  padding: 0;
+  color: inherit;
 }
 
 article {
@@ -160,9 +170,6 @@ article  ul {
 }
 
 
-aside {
-  border-top: 1px solid black;
-}
 aside form {
   padding: 3ex 1em;
   min-width: 18em;
@@ -202,7 +209,6 @@ aside input {
   }
   aside {
     border-left: 1px solid black;
-    border-top: none;
   }
 }
 @media (min-width: 1400px) {

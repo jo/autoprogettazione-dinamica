@@ -8,19 +8,24 @@
 </head>
 <body>
 <header id=header>
-<h1>Auto&shy;progetta&shy;zione Dinamica</h1>
+<h1><a href=#>Auto&shy;progetta&shy;zione Dinamica</a></h1>
 <h2>1123x<strong>B</strong></h2>
 <div class=fill></div>
 <a href=#help title="Need help using this?">?</a>
 </header>
 <main>
 	<nav>
+    <!--
+    <a title="" href=#welcome>Wel&shy;come</a>
     <a title="View introduction animation" href=#introduction>Intro&shy;duction</a>
+    -->
     <a title="Interactively configure your individual table" href=#interaction>Inter&shy;action</a>
     <a title="View and print the construction plan" href=#construction>Con&shy;struc&shy;tion</a>
-    <a title="Read about the background of the project" href=#abstract>Ab&shy;stract</a>
+    <a title="Read about the background of the project" href=#abstract>Ab&shy;out</a>
   </nav>
 	<article id=article></article>
+  <article id=welcome-template hidden>
+  </article>
   <article id=thoughts-template hidden>
 <h3>Autoprogetazione</h3>
 
@@ -61,15 +66,14 @@ Anhand des Bauplans und der Anleitung nagelst Du die Latten aufeinander. Du kann
 
 <p><img src=img/kit.gif></p>
 
-<h3>Owning the Means of Production</h3>
 <p>If you, like me, don't own a professional woodworking shop with a saw table etc.,
 then you rely on material, that you can process with the equipment you have at home.
 I had bought myself a chop &amp; miter saw and from then on I was able to cut boards and battens up to 10cm wide (and maybe 4cm thick).
 I construct everything from boards and laths since then. The lath is per-se the raw material as it comes rough sawn from the sawmill.</p>
 
-<h3>Dig into the Things</h3>
 <p>Furniture design shaped by the material and its manufacturing process is design based on possibility, it is material driven design.</p>
 
+<h3>Dig into the Things</h3>
 <p>We surround ourselves with an increasing number of products with decreasing useful life. Production
 usually happens far away, hidden. The only touchpoint with
 the origin of our product is the parcel carrier.</p>
@@ -100,19 +104,23 @@ products. Active construction and design train us in a critical approach to prod
 <p>TBD</p>
 -->
 <h3>How to use Autoprogetazione Dinamica</h3>
-<p>Welcome, happy to talk about this project. The website has four sections:</p>
+<p>Welcome, happy to talk about this project. The website has three sections:</p>
 <ul>
+<!--
     <li><a href=#introduction>Introduction</a>: visualization about how the project and the construction works</li>
+    -->
     <li><a href=#interaction>Interaction</a>: interactively configure your individual table</li>
     <li><a href=#construction>Construction</a>: construction plan and material list for the configured table, ready to be printed</li>
-    <li><a href=#abstract>Abstract</a>: background information on this project</li>
+    <li><a href=#abstract>About</a>: background information on this project</li>
 </ul>
 <p>Lets go over each part one by one. Skip over to the relevant topic as you
 like.</p>
+<!--
 <h4>Introduction Animation</h4>
 <p>In the introcution animation you learn how the table works - how its
 constructed off three different parts and how they are assembled. You can zoom
 and pan around the world using your mouse or touch.</p>
+-->
 <!--
 <p>TBD: insert GIF</p>
 -->
@@ -127,7 +135,7 @@ and blue cubes.</p>
 <p>TBD: insert GIF</p>
 -->
 to be printed.</p>
-<h4>Abstract</h4>
+<h4>About</h4>
 <p>Read more about the projects roots, Enzo Mari, the concepts, education, interaction, hacking.</p>
 <h3>Get in Contact</h3>
 <p>Yes! Just throw an email at <a href=mailto:schmidt@netzmerk.com>schmidt@netzmerk.com</a> or use the <a href=https://github.com/jo/autoprogettazione-dinamica/issues>GitHub
@@ -141,6 +149,7 @@ issue tracker</a> for this project.</p>
   import { App } from './js/app.js'
 
   const app = new App({
+    welcomeTemplate: document.getElementById('welcome-template'),
     article: document.getElementById('article'),
     aside: document.getElementById('aside'),
     thoughtsTemplate: document.getElementById('thoughts-template'),
