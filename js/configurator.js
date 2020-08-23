@@ -43,14 +43,14 @@ export class Configurator {
       .attr('name', 'q1')
       .attr('min', 0)
       .attr('step', '0.1')
-      .attr('disabled', true)
+      //.attr('disabled', true)
       .attr('value', formatLength(this.config.q1))
     this.q2Input = p4.append('input')
       .attr('type', 'number')
       .attr('name', 'q2')
       .attr('min', 0)
       .attr('step', '0.1')
-      .attr('disabled', true)
+      // .attr('disabled', true)
       .attr('value', formatLength(this.config.q2))
 
 
